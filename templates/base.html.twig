@@ -6,7 +6,7 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         {% endblock %}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white">
             <a class="navbar-brand" href="{{ path('home') }}">PtitCave</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -14,14 +14,26 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ">
+                    <li class="nav-item">
                         <a class="nav-link
                             {% if current_menu is defined and current_menu == 'properties' %}
                                 active
                             {% endif %}
                             "href="{{ path('property.index') }}">Acheter</a>
                     </li>
-                </ul>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle nav-item " type="button" id="dropdownMenuVin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Liste des Vins
+                         </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" title="Liste des vins Rouge">Vin Rouges</a></li>
+                            <li><a href="#" title="Liste des vins Rosé">Vin Rosé</a></li>
+                            <li><a href="#" title="Liste des vins Blanc">Vin Blanc</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="disabled"><a href="#" title="Liste de tous les vins">Liste complete</a></li>
+                        </ul>
+                    </div>
+                    </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
