@@ -52,6 +52,11 @@ class Bottle
     private $designation;
 
     /**
+     * @ORM\Column(type="boolean", options={"default": false })
+     */
+    private $sold;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $consumption_date;
@@ -60,11 +65,6 @@ class Bottle
      * @ORM\Column(type="string", length=255)
      */
     private $type;
-
-    /**
-     * @ORM\Column(type="boolean", options={"default": false})
-     */
-    private $sold;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -76,17 +76,17 @@ class Bottle
         return $this->id;
     }
 
-public function getName(): ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     public function setName(string $name): self
-{
-    $this->name = $name;
+    {
+        $this->name = $name;
 
-    return $this;
-}
+        return $this;
+    }
 
     public function getDescription(): ?string
     {
@@ -106,11 +106,11 @@ public function getName(): ?string
     }
 
     public function setDegree(int $degree): self
-{
-    $this->degree = $degree;
+    {
+        $this->degree = $degree;
 
-    return $this;
-}
+        return $this;
+    }
 
     public function getVintage(): ?int
     {
@@ -118,11 +118,11 @@ public function getName(): ?string
     }
 
     public function setVintage(int $vintage): self
-{
-    $this->vintage = $vintage;
+    {
+        $this->vintage = $vintage;
 
-    return $this;
-}
+        return $this;
+    }
 
     public function getQuantity(): ?int
     {
@@ -130,11 +130,11 @@ public function getName(): ?string
     }
 
     public function setQuantity(int $quantity): self
-{
-    $this->quantity = $quantity;
+    {
+        $this->quantity = $quantity;
 
-    return $this;
-}
+        return $this;
+    }
 
     public function getPrice(): ?int
     {
@@ -142,11 +142,11 @@ public function getName(): ?string
     }
 
     public function setPrice(int $price): self
-{
-    $this->price = $price;
+    {
+        $this->price = $price;
 
-    return $this;
-}
+        return $this;
+    }
 
     public function getDesignation(): ?string
     {
@@ -154,35 +154,11 @@ public function getName(): ?string
     }
 
     public function setDesignation(string $designation): self
-{
-    $this->designation = $designation;
-
-    return $this;
-}
-
-    public function getConsumptionDate(): ?\DateTimeInterface
     {
-        return $this->consumption_date;
+        $this->designation = $designation;
+
+        return $this;
     }
-
-    public function setConsumptionDate(\DateTimeInterface $consumption_date): self
-{
-    $this->consumption_date = $consumption_date;
-
-    return $this;
-}
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-{
-    $this->type = $type;
-
-    return $this;
-}
 
     public function getSold(): ?bool
     {
@@ -190,11 +166,35 @@ public function getName(): ?string
     }
 
     public function setSold(bool $sold): self
-{
-    $this->sold = $sold;
+    {
+        $this->sold = $sold;
 
-    return $this;
-}
+        return $this;
+    }
+
+    public function getConsumptionDate(): ?\DateTimeInterface
+    {
+        return $this->consumption_date;
+    }
+
+    public function setConsumptionDate(\DateTimeInterface $consumption_date): self
+    {
+        $this->consumption_date = $consumption_date;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
 
     public function getPicture(): ?string
     {
@@ -202,9 +202,9 @@ public function getName(): ?string
     }
 
     public function setPicture(string $picture): self
-{
-    $this->picture = $picture;
+    {
+        $this->picture = $picture;
 
-    return $this;
-}
+        return $this;
+    }
 }
