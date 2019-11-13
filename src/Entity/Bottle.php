@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Slugify;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BottleRepository")
@@ -54,7 +55,7 @@ class Bottle
     /**
      * @ORM\Column(type="boolean", options={"default": false })
      */
-    private $sold;
+    private $sold = false;
 
     /**
      * @ORM\Column(type="datetime")
@@ -71,137 +72,160 @@ class Bottle
      */
     private $picture;
 
-    public function getId(): ?int
+    public function getId() // : ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName() // : ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName($name) // : self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getDescription(): ?string
+    /**
+     * @return string
+     */
+    public function getSlug() //:string
+    {
+        return ( new Slugify())->slugify($this->name);
+    }
+
+    public function getDescription() // : ?string
     {
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription($description) // : self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getDegree(): ?int
+    public function getDegree() // : ?int
     {
         return $this->degree;
     }
 
-    public function setDegree(int $degree): self
+    public function setDegree($degree) // : self
     {
         $this->degree = $degree;
 
         return $this;
     }
 
-    public function getVintage(): ?int
+    public function getVintage() // : ?int
     {
         return $this->vintage;
     }
 
-    public function setVintage(int $vintage): self
+    public function setVintage($vintage) // : self
     {
         $this->vintage = $vintage;
 
         return $this;
     }
 
-    public function getQuantity(): ?int
+    public function getQuantity() // : ?int
     {
         return $this->quantity;
     }
 
-    public function setQuantity(int $quantity): self
+    public function setQuantity($quantity) // : self
     {
         $this->quantity = $quantity;
 
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice() // : ?int
     {
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    /**
+     * @param $price
+     * @return $this
+     */
+    public function setPrice($price) // : self
     {
         $this->price = $price;
 
         return $this;
     }
 
-    public function getDesignation(): ?string
+    /**
+     * @return string
+     */
+    public function getFormattedPrice()
+    {
+        return number_format($this->price,0,'',' ' );
+    }
+
+    public function getDesignation() // : ?string
     {
         return $this->designation;
     }
 
-    public function setDesignation(string $designation): self
+    public function setDesignation($designation) // : self
     {
         $this->designation = $designation;
 
         return $this;
     }
 
-    public function getSold(): ?bool
+    /**
+     * @return bool
+     */
+    public function getSold() // : ?bool
     {
         return $this->sold;
     }
 
-    public function setSold(bool $sold): self
+    public function setSold($sold) // : self
     {
         $this->sold = $sold;
 
         return $this;
     }
 
-    public function getConsumptionDate(): ?\DateTimeInterface
+    public function getConsumptionDate() // : ?\DateTimeInterface
     {
         return $this->consumption_date;
     }
 
-    public function setConsumptionDate(\DateTimeInterface $consumption_date): self
+    public function setConsumptionDate($consumption_date) // : self
     {
         $this->consumption_date = $consumption_date;
 
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType() // : ?string
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType($type) // : self
     {
         $this->type = $type;
 
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function getPicture() // : ?string
     {
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture($picture) // : self
     {
         $this->picture = $picture;
 

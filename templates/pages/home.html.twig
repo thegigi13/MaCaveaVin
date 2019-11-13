@@ -8,5 +8,25 @@
             Gestion d'une cave a vin pour particulier et professionel
         </p>
     </div>
+    <div class="container">
+        <h2>Toute les bouteilles</h2>
+        <div class="row flex">
+            {% for bottle in bottles  %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ path('property.show', { id : bottle.id, slug : bottle.slug}) }}">{{ bottle.name }}</a>
+                            </h5>
+                            <p class="card-text">{{ bottle.designation }} ({{ bottle.picture }}) </p>
+                            <div class="text-primary" style="font-weight: bold; font-size: 2rem ">{{ bottle.formattedPrice }} Euros</div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
 
 {% endblock %}
