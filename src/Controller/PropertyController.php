@@ -73,11 +73,22 @@ class PropertyController extends AbstractController
 
     /**
      * @Route("/biens/{slug}-{id}" , name="property.show", requirements={"slug" : "[a-z0-9\-]*"})
+     * @param Bottle $bottle
+     * @param string $slug
      * @return Response
      */
-    public function show($slug, $id) // : response
+    public function show(Bottle $bottle, string $slug) // : response
     {
-        $bottle = $this->repository->find($id);
+        if ($bottle->getSlug() !== $slug )
+        {
+            return $this->redirectToRoute('property.show', [
+                'id' => $bottle->getId(),
+                'slug' => $bottle->getSlug()
+            ], 301);
+        }
+
+
+
         return $this->render('property/show.html.twig',[
             'bottle' =>$bottle,
             'current_menu'=>'properties'

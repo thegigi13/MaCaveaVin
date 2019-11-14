@@ -1,11 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <div class="container">
-        {{ bottle.name }}
-    </div>
-{% endblock %}
+{% block title bottle.name%}
 
-{% block title %}
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                </div>
+                <div class="col-md-4">
+                    <h1>{{ bottle.name }}</h1>
+                    <h1>{{ bottle.vintage }} Millésime - {{ bottle.degree }} ° d'alchool</h1>
+                    <div class="text-primary" style="font-size: 4rem ; font-weight: bold;"> {{ bottle.formattedPrice }} Euros</div>
+                    <a href="#" class="btn btn-primary">Contacter le proprietaire</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <p>
+            {{  bottle.description | nl2br }}
+        </p>
+       <div class="row">
+           <div class="col-md-8">
+               <h2>Caractéristique de la bouteille</h2>
+               <table class="table table-striped">
+                   <tr>
+                       <td>Degrée d'alchool</td>
+                       <td>{{ bottle.degree }} °</td>
+                   </tr>
+                   <tr>
+                       <td>Millésime</td>
+                       <td>{{ bottle.vintage }}</td>
+                   </tr>
+                   <tr>
+                       <td>Quantité</td>
+                       <td>{{ bottle.quantity }}</td>
+                   </tr>
+               </table>
+           </div>
+           <div class="col-md-4">
+               <h2>Spécialités de la bouteille</h2>
+
+           </div>
+       </div>
+    </div>
 
 {% endblock %}
