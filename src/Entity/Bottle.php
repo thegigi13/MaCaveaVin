@@ -10,6 +10,8 @@ use Cocur\Slugify\Slugify;
  */
 class Bottle
 {
+    const DESIGNATION = 'Origine controlé';
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
